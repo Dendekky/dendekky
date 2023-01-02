@@ -9,5 +9,3 @@ Hey there! My name is Ibrahim and I'm a Full Stack Developer building awesome st
 <br /><br />
 
 <hr>
-
-<p>Thank you so much for your support. 💖</p>
