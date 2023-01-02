@@ -61,7 +61,25 @@ export default function Stack() {
             />
           </a>
         )}
+      <p>
+        Shoot me an email:{' '}
+        <a
+          className="dark:text-white text-black transition-colors duration-500"
+          href={`mailto:${contact.email}`}
+        >
+          {contact.email}
+        </a>
+      </p>
       </div>
+      <p>
+        Read some of my articles on{' '}
+        <a
+          className="dark:text-white text-black transition-colors duration-500"
+          href={`https://dev.to/dendekky`}
+        >
+          dev.to
+        </a>
+      </p>
     </div>
   );
 }

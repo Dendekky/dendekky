@@ -1,11 +1,12 @@
 export const meta = {
-  title: 'LeBron James - Web Developer and Designer',
-  description: 'Hey, I\'m LeBron. I\'m a web developer and designer building things people love.'
-}
+  title: 'Ibrahim Adeniyi - Full Stack Web Developer',
+  description:
+    "Hey, I'm Ibrahim. I'm a senior web developer with over 5 years of building things people love."
+};
 
 export const hero = {
-  title: "Hey there! I'm LeBron James.",
-  desc: "I'm a web developer and designer building things people love."
+  title: "Hey there! I'm Ibrahim.",
+  desc: "I'm a senior web developer with over 5 years of building things people love"
 };
 
 export const projects = {
@@ -13,22 +14,53 @@ export const projects = {
   desc: "Here are some of my favorite projects that I've worked on.",
   projects: [
     {
-      title: 'Lakers Official',
-      description: 'Home to the Los-Angeles Lakers',
-      link: 'https://lakers.com',
+      title: 'Klic.gg',
+      description: 'A gameplay/events video streaming application',
+      link: 'https://klic.gg',
       github: ''
     },
     {
-      title: 'Cool App',
-      description: 'A cool app!',
-      link: 'https://lebronscoolapp.com',
-      github: 'theking-lbj/cool-app'
+      title: 'Quick Lookup GraphQL Playground',
+      description:
+        'A beautiful feature-rich GraphQL Client IDE for Quick Lookup Graph API. Enables you interact with the GraphAPI server you are authorized to access from any platform you are on. Much like Postman for GraphQL, you can easily test and optimize your GraphQL implementations. You also have several features to make your GraphQL development process much easier including subscriptions, query scaffolding, formatting, multiple languages, themes, and many more.',
+      link: 'https://graphql.quicklookup.info/',
+      github: ''
     },
     {
-      title: 'Another app',
-      description: 'Another app!',
-      link: 'https://anotherlebronapp.com',
-      github: 'theking-lbj/another-app'
+      title: 'Best Countries List',
+      description: `Probably The Best API For Countries You'll Ever Find`,
+      link: 'https://countries.quicklookup.com/',
+      github: ''
+    },
+    {
+      title: 'Quick Lookup Self Service Portal',
+      description: `Quick Lookup's self service dashboard for admins and teams`,
+      link: 'https://admin.quicklookup.com/',
+      github: ''
+    },
+    {
+      title: "Quick Lookup's GraphQL API",
+      description: `A Massive Knowledge Graph of Curated Open Data`,
+      link: 'https://graph.quicklookup.com/graphql',
+      github: ''
+    },
+    {
+      title: "Quick Lookup's Plugin",
+      description: ``,
+      link: 'https://app.quicklookup.info/',
+      github: ''
+    },
+    {
+      title: 'Foodlocker',
+      description: `Online Food Store`,
+      link: 'https://www.foodlocker.com.ng/',
+      github: ''
+    },
+    {
+      title: 'Foodlocker Africa',
+      description: `Farming-as-a-Service Platform, Farm Management & Market Access`,
+      link: 'https://foodlocker.africa/',
+      github: ''
     }
   ]
 };
@@ -42,16 +74,20 @@ export const stack = {
     'Typescript',
     'React',
     'NextJS',
-    'TailwindCSS',
-    'Firebase',
-    'Git'
+    'Git',
+    'NodeJS',
+    'Express',
+    'GraphQL',
+    'Apollo',
+    'AWS',
+    'MongoDB',
+    'PostgreSQL'
   ]
 };
 
 export const contact = {
   title: 'Contact Me',
-  email: 'lebron@gmail.com',
-  github: 'theking-lbj',
-  dribbble: 'theking-lbj',
-  linkedin: 'theking-lbj'
+  email: 'adeniyiib360@gmail.com',
+  github: 'dendekky',
+  linkedin: 'dendekky'
 };
