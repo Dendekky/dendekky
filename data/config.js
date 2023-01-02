@@ -1,12 +1,12 @@
 export const meta = {
   title: 'Ibrahim Adeniyi - Full Stack Web Developer',
   description:
-    "Hey, I'm Ibrahim. I'm a senior web developer with over 5 years of building things people love."
+    "Hey, I'm Ibrahim. I'm a senior web developer with over 5 years of experience building things people love."
 };
 
 export const hero = {
   title: "Hey there! I'm Ibrahim.",
-  desc: "I'm a senior web developer with over 5 years of building things people love"
+  desc: "I'm a senior web developer with over 5 years of experience building things people love"
 };
 
 export const projects = {
