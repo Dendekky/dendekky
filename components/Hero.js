@@ -12,7 +12,7 @@ export default function Hero() {
             src="/static/profile.png"
             layout="fill"
             objectFit="contain"
-            alt="LeBron"
+            alt="Dendekky"
           />
         </div>
         <Image
