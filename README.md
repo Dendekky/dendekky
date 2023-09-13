@@ -1,6 +1,6 @@
 # Dendekky
 
-_✨ A senior web developer with over 5 years of experience building things people love. ✨_
+_✨ A fullstack web developer with over 5 years of experience building things people love. ✨_
 
 ## About me
 
