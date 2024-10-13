@@ -39,6 +39,12 @@ export const projects = {
       github: ''
     },
     {
+      title: 'GraphQL Typings CodeGen',
+      description: `A web application to generate the types and interfaces in Typescript for a graphql server.`,
+      link: 'https://dendekky-graphql-codegen.vercel.app/',
+      github: ''
+    },
+    {
       title: "Snjallgögn GraphQL Server",
       description: `A Massive Knowledge Graph of Curated Data`,
       link: 'https://app.contextsuite.com/graphql',
