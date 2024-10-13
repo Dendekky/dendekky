@@ -1,12 +1,12 @@
 export const meta = {
-  title: 'Ibrahim Adeniyi - Full Stack Web Developer',
+  title: 'Ibrahim Adeniyi - Full Stack Software Developer',
   description:
-    "Hey, I'm Ibrahim. I'm a senior web developer with over 5 years of experience building things people love."
+    "Hey, I'm Ibrahim. I'm a senior software developer with over 6 years of experience building things people love."
 };
 
 export const hero = {
   title: "Hey there! I'm Ibrahim.",
-  desc: "I'm a senior web developer with over 5 years of experience building things people love"
+  desc: "I'm a senior software developer with over 6 years of experience building things people love"
 };
 
 export const projects = {
@@ -14,16 +14,34 @@ export const projects = {
   desc: "Here are some of my favorite projects that I've worked on.",
   projects: [
     {
-      title: 'Klic.gg',
-      description: 'A gameplay/events video streaming application',
-      link: 'https://klic.gg',
+      title: 'Snjallgögn Context Suite',
+      description: `Snjallgögn's context suite application`,
+      link: 'https://app.contextsuite.com',
       github: ''
     },
     {
-      title: 'Quick Lookup GraphQL Playground',
+      title: 'Snjallgögn GraphQL Playground',
       description:
         'A beautiful feature-rich GraphQL Client IDE for Quick Lookup Graph API. ',
-      link: 'https://graphql.quicklookup.info/',
+      link: 'https://playground.contextsuite.com/',
+      github: ''
+    },
+    {
+      title: 'Snjallgögn Self Service Portal',
+      description: `Snjallgögn's self-service dashboard for admins and teams`,
+      link: 'https://admin.contextsuite.com',
+      github: ''
+    },
+    {
+      title: 'Snjallgögn Chatbot',
+      description: `A smart agent that helps with customer service automation, inquiries resolution, and other things for multiple companies internally and publicly.`,
+      link: '',
+      github: ''
+    },
+    {
+      title: "Snjallgögn GraphQL Server",
+      description: `A Massive Knowledge Graph of Curated Data`,
+      link: 'https://app.contextsuite.com/graphql',
       github: ''
     },
     {
@@ -33,21 +51,15 @@ export const projects = {
       github: ''
     },
     {
-      title: 'Quick Lookup Self Service Portal',
-      description: `Quick Lookup's self service dashboard for admins and teams`,
-      link: 'https://admin.quicklookup.com/',
-      github: ''
-    },
-    {
-      title: "Quick Lookup's GraphQL API",
-      description: `A Massive Knowledge Graph of Curated Open Data`,
-      link: 'https://graph.quicklookup.com/graphql',
-      github: ''
-    },
-    {
       title: "Quick Lookup's Plugin",
       description: ``,
       link: 'https://app.quicklookup.info/',
+      github: ''
+    },
+    {
+      title: 'Klic Game Streaming Platform',
+      description: 'A gameplay/events video streaming application',
+      link: 'https://klic.gg',
       github: ''
     },
     {
@@ -81,7 +93,8 @@ export const stack = {
     'Apollo',
     'AWS',
     'MongoDB',
-    'PostgreSQL'
+    'PostgreSQL',
+    'Redis'
   ]
 };
 
