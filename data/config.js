@@ -35,7 +35,7 @@ export const projects = {
     {
       title: 'Snjallgögn Chatbot',
       description: `A smart agent that helps with customer service automation, inquiries resolution, and other things for multiple companies internally and publicly. The link below describes the integration process`,
-      link: 'https://www.snjallgogn.is/intergation',
+      link: 'https://www.snjallgogn.is/integration',
       github: ''
     },
     {
