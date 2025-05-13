@@ -1,12 +1,12 @@
 export const meta = {
   title: 'Ibrahim Adeniyi - Full Stack Software Developer',
   description:
-    "Hey, I'm Ibrahim. I'm a senior software developer with over 6 years of experience building things people love."
+    "Hey, I'm Ibrahim. I'm a senior software developer with over 7 years of experience building things people love."
 };
 
 export const hero = {
   title: "Hey there! I'm Ibrahim.",
-  desc: "I'm a senior software developer with over 6 years of experience building things people love"
+  desc: "I'm a senior software developer with over 7 years of experience building things people love"
 };
 
 export const projects = {
@@ -17,6 +17,12 @@ export const projects = {
       title: 'Snjallgögn Context Suite',
       description: `Snjallgögn's context suite application`,
       link: 'https://app.contextsuite.com',
+      github: ''
+    },
+    {
+      title: 'Snjallgögn AI Agents',
+      description: `A smart agent that helps with customer service automation, inquiries resolution, and other things. Exists as a chatbot, and an installable package`,
+      link: 'https://www.snjallgogn.is/integrations',
       github: ''
     },
     {
@@ -33,12 +39,6 @@ export const projects = {
       github: ''
     },
     {
-      title: 'Snjallgögn Chatbot',
-      description: `A smart agent that helps with customer service automation, inquiries resolution, and other things for multiple companies internally and publicly. The link below describes the integration process`,
-      link: 'https://www.snjallgogn.is/integration',
-      github: ''
-    },
-    {
       title: 'GraphQL Typings CodeGen',
       description: `A web application to generate the types and interfaces in Typescript for a graphql server.`,
       link: 'https://dendekky-graphql-codegen.vercel.app/',
@@ -48,18 +48,6 @@ export const projects = {
       title: "Snjallgögn GraphQL Server",
       description: `A Massive Knowledge Graph of Curated Data`,
       link: 'https://app.contextsuite.com/graphql',
-      github: ''
-    },
-    {
-      title: 'Best Countries List',
-      description: `Probably The Best API For Countries You'll Ever Find`,
-      link: 'https://countries.quicklookup.com/',
-      github: ''
-    },
-    {
-      title: "Quick Lookup's Plugin",
-      description: ``,
-      link: 'https://app.quicklookup.info/',
       github: ''
     },
     {
@@ -98,9 +86,10 @@ export const stack = {
     'GraphQL',
     'Apollo',
     'AWS',
-    'MongoDB',
     'PostgreSQL',
-    'Redis'
+    'MongoDB',
+    'Redis',
+    'Kafka'
   ]
 };
 
