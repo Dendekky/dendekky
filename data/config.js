@@ -89,7 +89,9 @@ export const stack = {
     'PostgreSQL',
     'MongoDB',
     'Redis',
-    'Kafka'
+    'Kafka',
+    'Sanity',
+    'WordPress'
   ]
 };
 
