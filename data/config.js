@@ -14,15 +14,21 @@ export const projects = {
   desc: "Here are some of my favorite projects that I've worked on.",
   projects: [
     {
-      title: 'Snjallgögn Context Suite',
-      description: `Snjallgögn's context suite application`,
-      link: 'https://app.contextsuite.com',
-      github: ''
+      title: 'GraphQL Typings CodeGen',
+      description: `A web application to generate the types and interfaces in Typescript for a graphql server.`,
+      link: 'https://graphqlcodegen.com/',
+      github: 'https://github.com/Dendekky/graphql-codegen'
     },
     {
       title: 'Snjallgögn AI Agents',
       description: `A smart agent that helps with customer service automation, inquiries resolution, and other things. Exists as a chatbot, and an installable package`,
       link: 'https://www.snjallgogn.is/integrations',
+      github: ''
+    },
+    {
+      title: 'Snjallgögn Context Suite',
+      description: `Snjallgögn's context suite application`,
+      link: 'https://app.contextsuite.com',
       github: ''
     },
     {
@@ -34,20 +40,8 @@ export const projects = {
     },
     {
       title: 'Snjallgögn Self Service Portal',
-      description: `Snjallgögn's self-service dashboard for admins and teams`,
+      description: `Snjallgögn's self-service dashboard for admins and provisioning`,
       link: 'https://admin.contextsuite.com',
-      github: ''
-    },
-    {
-      title: 'GraphQL Typings CodeGen',
-      description: `A web application to generate the types and interfaces in Typescript for a graphql server.`,
-      link: 'https://dendekky-graphql-codegen.vercel.app/',
-      github: ''
-    },
-    {
-      title: "Snjallgögn GraphQL Server",
-      description: `A Massive Knowledge Graph of Curated Data`,
-      link: 'https://app.contextsuite.com/graphql',
       github: ''
     },
     {
