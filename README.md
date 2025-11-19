@@ -1,11 +1,13 @@
-# Dendekky
+# Ibrahim Adeniyi
 
-_✨ A fullstack web developer with over 6 years of experience building things people love. ✨_
+I'm a senior software developer with over 7 years of experience. I work on AI-powered customer service tools and developer tooling. Previously, I freelanced building web applications for various clients.
 
-## About me
+I specialize in full-stack development with React, TypeScript, and Node.js. I enjoy building scalable applications and exploring new technologies that solve real problems.
 
-<h3><a href="https://github.com/dendekky">@dendekky</a></h3>
-Hey there! My name is Ibrahim and I'm a Senior Software Developer building awesome stuff for the web! I work with technologies like NextJS, React, GraphQL, Typescript, Apollo, Express, Postgres, amongst others.
-<br /><br />
+This is my personal website built with Next.js, TypeScript, and Tailwind CSS. Inspired by [leerob.com](https://leerob.com/).
 
-<hr>
+- Email: [adeniyiib360@gmail.com](mailto:adeniyiib360@gmail.com)
+- LinkedIn: [linkedin.com/in/dendekky](https://linkedin.com/in/dendekky)
+- GitHub: [github.com/dendekky](https://github.com/dendekky)
+- Dev.to: [dev.to/dendekky](https://dev.to/dendekky)
+
