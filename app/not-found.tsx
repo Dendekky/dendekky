@@ -5,7 +5,7 @@ export default function NotFound() {
     <div className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="mb-4">404</h1>
       <p className="text-lg text-lightText mb-8">
-        The page you're looking for doesn't exist.
+        The page you&apos;re looking for doesn&apos;t exist.
       </p>
       <Link
         href="/"

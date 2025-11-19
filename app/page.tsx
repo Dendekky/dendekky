@@ -8,9 +8,9 @@ export default function Home() {
 
       <div className="prose prose-invert max-w-none mb-12">
         <p className="text-lg text-lightText leading-relaxed mb-4">
-          I'm a senior software developer at Snjallgögn. I work on AI-powered customer 
+          I&apos;m a senior software developer at Snjallgögn. I work on AI-powered customer 
           service tools and developer tooling. Previously, I freelanced building web 
-          applications for various clients. I've been coding for over 7 years.
+          applications for various clients. I&apos;ve been coding for over 7 years.
         </p>
         <p className="text-lg text-lightText leading-relaxed mb-4">
           I specialize in full-stack development with React, TypeScript, and Node.js. 
@@ -20,7 +20,7 @@ export default function Home() {
         <p className="text-lg text-lightText leading-relaxed">
           Explore my{' '}
           <Link href="/projects">projects</Link>, or follow me online. View my{' '}
-          <Link href="/resume">resume</Link> if you're interested in working together.
+          <Link href="/resume">resume</Link> if you&apos;re interested in working together.
         </p>
       </div>
 

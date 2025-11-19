@@ -14,7 +14,7 @@ export default function ProjectsPage() {
     <div className="max-w-2xl mx-auto px-6 py-12">
       <h1 className="mb-8">Projects</h1>
       <p className="text-lg text-lightText mb-12">
-        Here are some of my favorite projects that I've worked on.
+        Here are some of my favorite projects that I&apos;ve worked on.
       </p>
 
       {featuredProjects.length > 0 && (
