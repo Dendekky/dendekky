@@ -2,8 +2,12 @@ import { projects } from '@/data/projects';
 import Image from 'next/image';
 
 export const metadata = {
-  title: 'Projects | Ibrahim Adeniyi',
-  description: "A collection of projects I've worked on.",
+  title: 'Projects',
+  description: "A collection of projects I've worked on. Explore web applications and tools built with React, TypeScript, and Node.js.",
+  openGraph: {
+    title: 'Projects | Ibrahim Adeniyi',
+    description: "A collection of projects I've worked on.",
+  },
 };
 
 export default function ProjectsPage() {

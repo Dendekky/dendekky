@@ -2,8 +2,12 @@ import { resumeData } from '@/data/resume';
 import { contact } from '@/data/config';
 
 export const metadata = {
-  title: 'Resume | Ibrahim Adeniyi',
-  description: 'Professional experience and skills.',
+  title: 'Resume',
+  description: 'Professional experience, skills, and education of Ibrahim Adeniyi - Senior Software Developer with 7+ years of experience.',
+  openGraph: {
+    title: 'Resume | Ibrahim Adeniyi',
+    description: 'Professional experience and skills.',
+  },
 };
 
 export default function ResumePage() {
