@@ -19,7 +19,8 @@ export default function Home() {
         </p>
         <p className="text-lg text-lightText leading-relaxed">
           Explore my{' '}
-          <Link href="/projects">projects</Link>, or follow me online. View my{' '}
+          <Link href="/projects">projects</Link> and{' '}
+          <Link href="/blog">articles</Link>, or follow me online. View my{' '}
           <Link href="/resume">resume</Link> if you&apos;re interested in working together.
         </p>
       </div>
