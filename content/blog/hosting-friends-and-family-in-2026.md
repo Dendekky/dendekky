@@ -1,7 +1,7 @@
 ---
 title: Hosting Friends and Family in The New Year
 date: '2026-01-04'
-summary: ''
+summary: How my wife and I celebrated the new year and hosted our friends and family
 tags:
   - new year
 ---
