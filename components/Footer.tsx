@@ -41,9 +41,9 @@ export default function Footer() {
               </a>
             )}
           </div>
-          <p className="text-lightText text-sm">
+          <Link href="/" className="text-lightText text-sm hover:text-white transition-colors">
             © {new Date().getFullYear()} Ibrahim Adeniyi
-          </p>
+          </Link>
         </div>
       </div>
     </footer>
