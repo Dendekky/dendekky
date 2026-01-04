@@ -4,7 +4,6 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { revalidatePath } from 'next/cache';
-import { redirect } from 'next/navigation';
 
 const blogDirectory = path.join(process.cwd(), 'content/blog');
 
@@ -33,23 +32,27 @@ function ensureDirectoryExists() {
 export async function createPost(formData: FormData) {
   ensureDirectoryExists();
   
-  const title = formData.get('title') as string;
-  const slug = formData.get('slug') as string;
-  const date = formData.get('date') as string;
-  const summary = formData.get('summary') as string;
-  const tagsStr = formData.get('tags') as string;
-  const content = formData.get('content') as string;
-  const heroImage = formData.get('heroImage') as string;
+  const title = formData.get('title')?.toString() || '';
+  const slug = formData.get('slug')?.toString() || '';
+  const date = formData.get('date')?.toString() || '';
+  const summary = formData.get('summary')?.toString() || '';
+  const tagsStr = formData.get('tags')?.toString() || '';
+  const content = formData.get('content')?.toString() || '';
+  const heroImage = formData.get('heroImage')?.toString() || '';
 
   const tags = tagsStr.split(',').map((t) => t.trim()).filter(Boolean);
 
-  const frontmatter = {
+  const frontmatter: Record<string, unknown> = {
     title,
     date,
     summary,
     tags,
-    heroImage: heroImage || undefined,
   };
+  
+  // Only add heroImage if it has a value
+  if (heroImage) {
+    frontmatter.heroImage = heroImage;
+  }
 
   const fileContent = matter.stringify(content, frontmatter);
   const filePath = path.join(blogDirectory, `${slug}.md`);
@@ -69,23 +72,26 @@ export async function updatePost(originalSlug: string, formData: FormData) {
   ensureDevelopementMode();
   ensureDirectoryExists();
 
-  const title = formData.get('title') as string;
-  const slug = formData.get('slug') as string;
-  const date = formData.get('date') as string;
-  const summary = formData.get('summary') as string;
-  const tagsStr = formData.get('tags') as string;
-  const content = formData.get('content') as string;
-  const heroImage = formData.get('heroImage') as string;
+  const title = formData.get('title')?.toString() || '';
+  const slug = formData.get('slug')?.toString() || '';
+  const date = formData.get('date')?.toString() || '';
+  const summary = formData.get('summary')?.toString() || '';
+  const tagsStr = formData.get('tags')?.toString() || '';
+  const content = formData.get('content')?.toString() || '';
+  const heroImage = formData.get('heroImage')?.toString() || '';
 
   const tags = tagsStr.split(',').map((t) => t.trim()).filter(Boolean);
 
-  const frontmatter = {
+  const frontmatter: Record<string, unknown> = {
     title,
     date,
     summary,
     tags,
-    heroImage: heroImage || undefined,
   };
+  
+  if (heroImage) {
+    frontmatter.heroImage = heroImage;
+  }
 
   const fileContent = matter.stringify(content, frontmatter);
   

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { useState, useCallback, useMemo } from 'react';
@@ -9,6 +8,16 @@ import { createPost, updatePost } from '@/app/actions/blog';
 
 // Dynamically import SimpleMDE to avoid SSR issues
 const SimpleMDE = dynamic(() => import('react-simplemde-editor'), { ssr: false });
+
+interface FormState {
+  title: string;
+  slug: string;
+  date: string;
+  tags: string;
+  summary: string;
+  heroImage: string;
+  content: string;
+}
 
 interface PostEditorProps {
   initialData?: {
@@ -25,22 +34,37 @@ interface PostEditorProps {
 
 export default function PostEditor({ initialData, isEditing = false }: PostEditorProps) {
   const router = useRouter();
-  const [content, setContent] = useState(initialData?.content || '');
+  const [form, setForm] = useState<FormState>({
+    title: initialData?.title || '',
+    slug: initialData?.slug || '',
+    date: initialData?.date || new Date().toISOString().split('T')[0],
+    tags: initialData?.tags?.join(', ') || '',
+    summary: initialData?.summary || '',
+    heroImage: initialData?.heroImage || '',
+    content: initialData?.content || '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [slug, setSlug] = useState(initialData?.slug || '');
   const [isSlugManuallyEdited, setIsSlugManuallyEdited] = useState(!!initialData?.slug);
+  const [error, setError] = useState<string | null>(null);
+
+  const updateField = <K extends keyof FormState>(field: K, value: FormState[K]) => {
+    setForm(prev => ({ ...prev, [field]: value }));
+  };
 
   const onChange = useCallback((value: string) => {
-    setContent(value);
+    setForm(prev => ({ ...prev, content: value }));
   }, []);
 
   const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
     if (!isSlugManuallyEdited && !isEditing) {
-      const newSlug = e.target.value
+      const newSlug = value
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)+/g, '');
-      setSlug(newSlug);
+      setForm(prev => ({ ...prev, title: value, slug: newSlug }));
+    } else {
+      updateField('title', value);
     }
   };
 
@@ -51,10 +75,14 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
     };
   }, []);
 
-  async function handleSubmit(formData: FormData) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
     setIsSubmitting(true);
-    formData.append('content', content);
-    formData.set('slug', slug); // Ensure state slug is submitted
+    setError(null);
+    
+    const formData = new FormData(e.currentTarget);
+    formData.set('content', form.content);
+    formData.set('slug', form.slug);
     
     try {
       let result;
@@ -66,21 +94,25 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
       
       if (result && result.success) {
         router.push('/admin/blog');
-        router.refresh(); // Ensure the list is updated
+        router.refresh();
       } else {
-        // Handle unexpected failure if any
         setIsSubmitting(false);
-        alert('Failed to save the post.');
+        setError('Failed to save the post.');
       }
-    } catch (error) {
-      console.error(error);
+    } catch (err) {
+      console.error(err);
       setIsSubmitting(false);
-      alert('An error occurred while saving the post.');
+      setError(err instanceof Error ? err.message : 'An error occurred while saving the post.');
     }
   }
 
   return (
-    <form action={handleSubmit} className="space-y-6 max-w-4xl mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl mx-auto">
+      {error && (
+        <div className="p-4 bg-red-100 dark:bg-red-900/30 border border-red-300 dark:border-red-700 rounded-md text-red-700 dark:text-red-300">
+          {error}
+        </div>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
           <label htmlFor="title" className="block text-sm font-medium">
@@ -91,7 +123,7 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             id="title"
             name="title"
             required
-            defaultValue={initialData?.title}
+            value={form.title}
             onChange={handleTitleChange}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
@@ -107,9 +139,9 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
               id="slug"
               name="slug"
               required
-              value={slug}
+              value={form.slug}
               onChange={(e) => {
-                setSlug(e.target.value);
+                updateField('slug', e.target.value);
                 setIsSlugManuallyEdited(true);
               }}
               className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
@@ -117,16 +149,12 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             <button
                type="button"
                onClick={() => {
-                 // Regenerate slug from current title value if user wants to reset
-                 const titleInput = document.getElementById('title') as HTMLInputElement;
-                 if (titleInput) {
-                    const newSlug = titleInput.value
-                      .toLowerCase()
-                      .replace(/[^a-z0-9]+/g, '-')
-                      .replace(/(^-|-$)+/g, '');
-                    setSlug(newSlug);
-                    setIsSlugManuallyEdited(false);
-                 }
+                 const newSlug = form.title
+                   .toLowerCase()
+                   .replace(/[^a-z0-9]+/g, '-')
+                   .replace(/(^-|-$)+/g, '');
+                 updateField('slug', newSlug);
+                 setIsSlugManuallyEdited(false);
                }}
                className="p-2 text-gray-500 hover:text-blue-500 border border-gray-300 dark:border-gray-700 rounded-md"
                title="Regenerate from title"
@@ -145,7 +173,8 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             id="date"
             name="date"
             required
-            defaultValue={initialData?.date || new Date().toISOString().split('T')[0]}
+            value={form.date}
+            onChange={(e) => updateField('date', e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
         </div>
@@ -158,7 +187,8 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             type="text"
             id="tags"
             name="tags"
-            defaultValue={initialData?.tags?.join(', ')}
+            value={form.tags}
+            onChange={(e) => updateField('tags', e.target.value)}
             placeholder="tech, web, nextjs"
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
@@ -172,7 +202,8 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             type="text"
             id="heroImage"
             name="heroImage"
-            defaultValue={initialData?.heroImage}
+            value={form.heroImage}
+            onChange={(e) => updateField('heroImage', e.target.value)}
             placeholder="/images/blog/my-image.jpg"
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
@@ -187,7 +218,8 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
           id="summary"
           name="summary"
           rows={3}
-          defaultValue={initialData?.summary}
+          value={form.summary}
+          onChange={(e) => updateField('summary', e.target.value)}
           className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
         />
       </div>
@@ -195,7 +227,7 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
       <div className="space-y-2 prose dark:prose-invert max-w-none">
         <label className="block text-sm font-medium">Content (Markdown)</label>
         <SimpleMDE
-          value={content}
+          value={form.content}
           onChange={onChange}
           options={autofocusNoSpellcheckerOptions}
         />
