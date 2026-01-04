@@ -12,6 +12,7 @@ export interface BlogPost {
   content: string;
   tags: string[];
   readingTime: number;
+  heroImage?: string;
 }
 
 export interface BlogPostMeta {
@@ -21,6 +22,7 @@ export interface BlogPostMeta {
   summary: string;
   tags: string[];
   readingTime: number;
+  heroImage?: string;
 }
 
 const blogDirectory = path.join(process.cwd(), 'content/blog');
@@ -53,6 +55,7 @@ export function getBlogPosts(): BlogPostMeta[] {
         summary: data.summary || '',
         tags: data.tags || [],
         readingTime: calculateReadingTime(content),
+        heroImage: data.heroImage || undefined,
       };
     })
     .sort((a, b) => (a.date > b.date ? -1 : 1));
@@ -77,6 +80,7 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
       content: contentHtml,
       tags: data.tags || [],
       readingTime: calculateReadingTime(content),
+      heroImage: data.heroImage || undefined,
     };
   } catch {
     return null;
@@ -97,6 +101,7 @@ export async function getPostRaw(slug: string): Promise<BlogPost | null> {
       content: content, // Raw markdown
       tags: data.tags || [],
       readingTime: calculateReadingTime(content),
+      heroImage: data.heroImage || undefined,
     };
   } catch {
     return null;

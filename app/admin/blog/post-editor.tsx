@@ -17,6 +17,7 @@ interface PostEditorProps {
     summary: string;
     tags: string[];
     content: string;
+    heroImage?: string;
   };
   isEditing?: boolean;
 }
@@ -119,6 +120,20 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             name="tags"
             defaultValue={initialData?.tags?.join(', ')}
             placeholder="tech, web, nextjs"
+            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
+          />
+        </div>
+
+        <div className="space-y-2 col-span-1 md:col-span-2">
+          <label htmlFor="heroImage" className="block text-sm font-medium">
+            Hero Image URL (Optional)
+          </label>
+          <input
+            type="text"
+            id="heroImage"
+            name="heroImage"
+            defaultValue={initialData?.heroImage}
+            placeholder="/images/blog/my-image.jpg"
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
         </div>

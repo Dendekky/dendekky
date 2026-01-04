@@ -4,6 +4,7 @@ date: '2026-01-04'
 summary: How my wife and I celebrated the new year and hosted our friends and family
 tags:
   - new year
+heroImage: /static/images/blog/friends-and-family-avatars.png
 ---
 I hosted friends and family for the first time ever for the new year's celebration. 
 Typically, I would spend the first day of the year at my parent's and we'd celebrate with them. But this year, we made the decision to have them over — and it was lovely, after all. 

@@ -39,6 +39,7 @@ export async function createPost(formData: FormData) {
   const summary = formData.get('summary') as string;
   const tagsStr = formData.get('tags') as string;
   const content = formData.get('content') as string;
+  const heroImage = formData.get('heroImage') as string;
 
   const tags = tagsStr.split(',').map((t) => t.trim()).filter(Boolean);
 
@@ -47,6 +48,7 @@ export async function createPost(formData: FormData) {
     date,
     summary,
     tags,
+    heroImage: heroImage || undefined,
   };
 
   const fileContent = matter.stringify(content, frontmatter);
@@ -73,6 +75,7 @@ export async function updatePost(originalSlug: string, formData: FormData) {
   const summary = formData.get('summary') as string;
   const tagsStr = formData.get('tags') as string;
   const content = formData.get('content') as string;
+  const heroImage = formData.get('heroImage') as string;
 
   const tags = tagsStr.split(',').map((t) => t.trim()).filter(Boolean);
 
@@ -81,6 +84,7 @@ export async function updatePost(originalSlug: string, formData: FormData) {
     date,
     summary,
     tags,
+    heroImage: heroImage || undefined,
   };
 
   const fileContent = matter.stringify(content, frontmatter);

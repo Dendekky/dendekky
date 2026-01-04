@@ -34,11 +34,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: post.date,
       authors: ['Ibrahim Adeniyi'],
       tags: post.tags,
+      images: post.heroImage ? [post.heroImage] : undefined,
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.summary,
+      images: post.heroImage ? [post.heroImage] : undefined,
     },
   };
 }
@@ -61,6 +63,15 @@ export default async function BlogPostPage({ params }: Props) {
       </Link>
 
       <header className="mb-8">
+        {post.heroImage && (
+          <div className="mb-8 rounded-lg overflow-hidden">
+            <img
+              src={post.heroImage}
+              alt={post.title}
+              className="w-full h-auto object-cover max-h-[400px]"
+            />
+          </div>
+        )}
         <h1 className="mb-4">{post.title}</h1>
         <div className="flex items-center gap-4 text-sm text-lightText/70 mb-4">
           <time dateTime={post.date}>
