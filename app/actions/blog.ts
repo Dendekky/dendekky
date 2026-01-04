@@ -17,7 +17,14 @@ interface BlogPostData {
   content: string;
 }
 
+function ensureDevelopementMode() {
+  if (process.env.NODE_ENV !== 'development') {
+    throw new Error('Blog management is only available in development mode.');
+  }
+}
+
 function ensureDirectoryExists() {
+  ensureDevelopementMode();
   if (!fs.existsSync(blogDirectory)) {
     fs.mkdirSync(blogDirectory, { recursive: true });
   }
@@ -57,6 +64,7 @@ export async function createPost(formData: FormData) {
 }
 
 export async function updatePost(originalSlug: string, formData: FormData) {
+  ensureDevelopementMode();
   ensureDirectoryExists();
 
   const title = formData.get('title') as string;
@@ -95,6 +103,7 @@ export async function updatePost(originalSlug: string, formData: FormData) {
 }
 
 export async function deletePost(slug: string) {
+  ensureDevelopementMode();
   const filePath = path.join(blogDirectory, `${slug}.md`);
   if (fs.existsSync(filePath)) {
     fs.unlinkSync(filePath);

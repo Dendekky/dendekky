@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { getPostRaw } from '@/lib/blog';
 import PostEditor from '../../post-editor';
+import DevelopmentOnly from '@/components/admin/DevelopmentOnly';
 
 interface EditPostPageProps {
   params: Promise<{
@@ -17,9 +18,11 @@ export default async function EditPostPage({ params }: EditPostPageProps) {
   }
 
   return (
-    <div>
-      <h2 className="text-xl font-semibold mb-6">Edit Post: {post.title}</h2>
-      <PostEditor initialData={post} isEditing />
-    </div>
+    <DevelopmentOnly>
+      <div>
+        <h2 className="text-xl font-semibold mb-6">Edit Post: {post.title}</h2>
+        <PostEditor initialData={post} isEditing />
+      </div>
+    </DevelopmentOnly>
   );
 }
