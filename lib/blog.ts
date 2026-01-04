@@ -83,6 +83,26 @@ export async function getBlogPost(slug: string): Promise<BlogPost | null> {
   }
 }
 
+export async function getPostRaw(slug: string): Promise<BlogPost | null> {
+  try {
+    const fullPath = path.join(blogDirectory, `${slug}.md`);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
+
+    return {
+      slug,
+      title: data.title || slug,
+      date: data.date || '',
+      summary: data.summary || '',
+      content: content, // Raw markdown
+      tags: data.tags || [],
+      readingTime: calculateReadingTime(content),
+    };
+  } catch {
+    return null;
+  }
+}
+
 export function getAllTags(): string[] {
   const posts = getBlogPosts();
   const tagSet = new Set<string>();
