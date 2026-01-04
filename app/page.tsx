@@ -32,7 +32,7 @@ export default function Home() {
             {contact.email}
           </a>
         </p>
-        <p className="text-lightText mt-4">
+        {/* <p className="text-lightText mt-4">
           Read some of my articles on{' '}
           <a
             href="https://dev.to/dendekky"
@@ -41,7 +41,7 @@ export default function Home() {
           >
             dev.to
           </a>
-        </p>
+        </p> */}
       </section>
     </div>
   );

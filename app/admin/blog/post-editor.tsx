@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useCallback, useMemo } from 'react';
@@ -26,10 +27,22 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
   const router = useRouter();
   const [content, setContent] = useState(initialData?.content || '');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [slug, setSlug] = useState(initialData?.slug || '');
+  const [isSlugManuallyEdited, setIsSlugManuallyEdited] = useState(!!initialData?.slug);
 
   const onChange = useCallback((value: string) => {
     setContent(value);
   }, []);
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!isSlugManuallyEdited && !isEditing) {
+      const newSlug = e.target.value
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)+/g, '');
+      setSlug(newSlug);
+    }
+  };
 
   const autofocusNoSpellcheckerOptions = useMemo(() => {
     return {
@@ -41,6 +54,7 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
   async function handleSubmit(formData: FormData) {
     setIsSubmitting(true);
     formData.append('content', content);
+    formData.set('slug', slug); // Ensure state slug is submitted
     
     try {
       let result;
@@ -78,6 +92,7 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
             name="title"
             required
             defaultValue={initialData?.title}
+            onChange={handleTitleChange}
             className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
           />
         </div>
@@ -86,14 +101,39 @@ export default function PostEditor({ initialData, isEditing = false }: PostEdito
           <label htmlFor="slug" className="block text-sm font-medium">
             Slug (URL)
           </label>
-          <input
-            type="text"
-            id="slug"
-            name="slug"
-            required
-            defaultValue={initialData?.slug}
-            className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
-          />
+          <div className="flex gap-2">
+             <input
+              type="text"
+              id="slug"
+              name="slug"
+              required
+              value={slug}
+              onChange={(e) => {
+                setSlug(e.target.value);
+                setIsSlugManuallyEdited(true);
+              }}
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-700 rounded-md bg-white dark:bg-gray-800"
+            />
+            <button
+               type="button"
+               onClick={() => {
+                 // Regenerate slug from current title value if user wants to reset
+                 const titleInput = document.getElementById('title') as HTMLInputElement;
+                 if (titleInput) {
+                    const newSlug = titleInput.value
+                      .toLowerCase()
+                      .replace(/[^a-z0-9]+/g, '-')
+                      .replace(/(^-|-$)+/g, '');
+                    setSlug(newSlug);
+                    setIsSlugManuallyEdited(false);
+                 }
+               }}
+               className="p-2 text-gray-500 hover:text-blue-500 border border-gray-300 dark:border-gray-700 rounded-md"
+               title="Regenerate from title"
+            >
+              ↺
+            </button>
+          </div>
         </div>
 
         <div className="space-y-2">
