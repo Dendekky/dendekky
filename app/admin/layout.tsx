@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function AdminLayout({
   children,
 }: {
@@ -11,12 +13,12 @@ export default function AdminLayout({
             Dendekky Admin
           </h1>
           <nav className="mt-4 flex gap-4">
-            <a href="/admin/blog" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
+            <Link href="/admin/blog" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
               Blog Posts
-            </a>
-            <a href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
+            </Link>
+            <Link href="/" className="text-gray-600 dark:text-gray-400 hover:text-blue-500">
               Back to Site
-            </a>
+            </Link>
           </nav>
         </div>
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6 border border-gray-100 dark:border-gray-700">
